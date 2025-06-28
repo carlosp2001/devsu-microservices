@@ -12,7 +12,7 @@ begin
     seq_num := nextval('persona_id_seq');
     return 'PERSONA-' || lpad(seq_num::text, 5, '0');
 end;
-$$;
+$$ language plpgsql;
 
 create table persona
 (
@@ -38,15 +38,24 @@ begin
     seq_num := nextval('cliente_id_seq');
     return 'CLIENTE-' || lpad(seq_num::text, 5, '0');
 end;
-$$;
+$$ language plpgsql;
 
 create table cliente
 (
     id         text         not null primary key,
-    cliente_id varchar(255) not null,
     persona_id text         not null references persona (id),
     estado     varchar(255) not null,
     password   text         not null,
     created_at timestamp    not null default now(),
     updated_at timestamp    not null default now()
 );
+
+
+create table peticion
+(
+    peticion_id uuid                  default uuid_generate_v4() not null primary key,
+    estado      varchar(255) not null,
+    mensaje     varchar(255) not null,
+    created_at  timestamp    not null default now(),
+    updated_at  timestamp    not null default now()
+)
