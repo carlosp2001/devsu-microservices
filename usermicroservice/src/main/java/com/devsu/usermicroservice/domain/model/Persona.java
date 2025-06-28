@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class Persona {
 
-    private String id;
+    private final String id;
     private String nombre;
     private Short edad;
     private PersonaGenero genero;
