@@ -14,7 +14,7 @@ public record CreateClientRequestDTO(
 
         @NotNull(message = "La edad es obligatoria")
         @Min(value = 18, message = "Debe de ser mayor de edad para poder crear un cliente")
-        short edad,
+        Short edad,
 
         @NotNull(message = "El identificacion es obligatorio para crear un cliente")
         @NotEmpty(message = "El identificacion es obligatorio para crear un cliente")
