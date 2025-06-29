@@ -33,7 +33,6 @@ public class CreateClientService implements CreateClientUseCase {
                 command.edad(),
                 PersonaGenero.valueOf(command.genero().name()),
                 command.direccion(),
-                command.identificacion(),
                 command.telefono(),
                 command.password());
         ClienteEntity clientEntity = clienteMapper.toEntity(client);
