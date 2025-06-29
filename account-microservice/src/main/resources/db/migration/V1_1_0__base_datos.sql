@@ -28,7 +28,7 @@ create table cuenta
 -- Cliente
 create table peticion
 (
-    peticion_id uuid                  default uuid_generate_v4() not null primary key,
+    peticion_id uuid not null primary key,
     estado      varchar(255) not null,
     mensaje     varchar(255) not null,
     created_at  timestamp    not null default now(),
