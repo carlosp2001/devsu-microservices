@@ -1,17 +1,23 @@
 package com.devsu.accountmicroservice.domain.model;
 
+import com.devsu.accountmicroservice.domain.command.MovimientoCommand;
 import com.devsu.accountmicroservice.domain.model.enums.CuentaTipo;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class Cuenta {
     private String id;
+    @Setter
     private Double saldo;
     private CuentaTipo tipo;
     private Boolean estado;
     private String clienteId;
+    List<Movimiento> movimientos = new ArrayList<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -42,5 +48,11 @@ public class Cuenta {
     public void update(Boolean estado) {
         this.estado = estado;
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public Movimiento addTransaction(MovimientoCommand command) {
+        Movimiento movimiento = command.execute(this);
+        this.updatedAt = LocalDateTime.now();
+        return movimiento;
     }
 }
