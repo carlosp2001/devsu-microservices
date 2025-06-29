@@ -16,19 +16,19 @@ $$ language plpgsql;
 
 create table cuenta
 (
-    id            text         not null primary key,
-    saldo_inicial decimal      not null,
-    tipo          varchar(255) not null,
-    estado        boolean      not null,
-    cliente_id    text         not null,
-    created_at    timestamp    not null default now(),
-    updated_at    timestamp    not null default now()
+    id         text         not null primary key,
+    saldo      decimal      not null,
+    tipo       varchar(255) not null,
+    estado     boolean      not null,
+    cliente_id text         not null,
+    created_at timestamp    not null default now(),
+    updated_at timestamp    not null default now()
 );
 
 -- Cliente
 create table peticion
 (
-    peticion_id uuid not null primary key,
+    peticion_id uuid         not null primary key,
     estado      varchar(255) not null,
     mensaje     varchar(255) not null,
     created_at  timestamp    not null default now(),
