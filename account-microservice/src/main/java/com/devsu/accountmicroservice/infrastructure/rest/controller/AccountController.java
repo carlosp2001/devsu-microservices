@@ -2,6 +2,7 @@ package com.devsu.accountmicroservice.infrastructure.rest.controller;
 
 import com.devsu.accountmicroservice.application.command.CreateAccountCommand;
 import com.devsu.accountmicroservice.application.port.in.CreateAccountUseCase;
+import com.devsu.accountmicroservice.application.port.in.DeleteAccountUseCase;
 import com.devsu.accountmicroservice.application.port.in.GetAccountByIdUseCase;
 import com.devsu.accountmicroservice.application.port.in.GetPeticionStatusUseCase;
 import com.devsu.accountmicroservice.infrastructure.rest.dto.CreateAccountRequestDTO;
@@ -21,6 +22,7 @@ public class AccountController {
     private final CreateAccountUseCase createAccountUseCase;
     private final GetPeticionStatusUseCase getPeticionStatusUseCase;
     private final GetAccountByIdUseCase getAccountByIdUseCase;
+    private final DeleteAccountUseCase deleteAccountUseCase;
 
     @PostMapping
     public ResponseEntity<Peticion> createAccount(@RequestBody @Valid CreateAccountRequestDTO requestDTO) {
@@ -41,5 +43,11 @@ public class AccountController {
     @GetMapping("/{accountId}")
     public ResponseEntity<GetAccountByIdResponseDTO> getAccountById(@PathVariable("accountId") String accountId) {
         return ResponseEntity.ok(getAccountByIdUseCase.execute(accountId));
+    }
+
+    @DeleteMapping("/{accountId}")
+    public ResponseEntity<Void> deleteAccount(@PathVariable("accountId") String accountId) {
+        deleteAccountUseCase.execute(accountId);
+        return ResponseEntity.noContent().build();
     }
 }
