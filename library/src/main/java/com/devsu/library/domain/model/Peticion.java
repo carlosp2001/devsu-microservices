@@ -28,4 +28,16 @@ public class Peticion implements Serializable {
         this.mensaje = mensaje;
         this.updatedAt = LocalDateTime.now();
     }
+
+    private Peticion(UUID peticionId, String mensaje, PeticionEstado estado, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.peticionId = peticionId;
+        this.mensaje = mensaje;
+        this.estado = estado;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public static Peticion hydrate(UUID peticionId, String mensaje, PeticionEstado estado, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        return new Peticion(peticionId, mensaje, estado, createdAt, updatedAt);
+    }
 }
