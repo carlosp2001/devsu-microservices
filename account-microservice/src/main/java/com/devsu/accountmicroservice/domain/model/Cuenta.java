@@ -38,4 +38,9 @@ public class Cuenta {
     public static Cuenta hydrate(String id, Double saldo, CuentaTipo tipo, Boolean estado, String clienteId, LocalDateTime createdAt, LocalDateTime updatedAt) {
         return new Cuenta(id, saldo, tipo, estado, clienteId, createdAt, updatedAt);
     }
+
+    public void update(Boolean estado) {
+        this.estado = estado;
+        this.updatedAt = LocalDateTime.now();
+    }
 }
