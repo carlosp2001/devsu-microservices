@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 public record CreateClientResponseDTO(
         String id,
         String nombre,
-        short edad,
+        Short edad,
         PersonaGeneroDTO genero,
         String direccion,
         String telefono,
-        boolean estado,
+        Boolean estado,
         String password,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
