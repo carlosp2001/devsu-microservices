@@ -8,7 +8,7 @@ import com.devsu.usermicroservice.domain.model.Cliente;
 import com.devsu.usermicroservice.domain.model.enums.PersonaGenero;
 import com.devsu.usermicroservice.infrastructure.mapper.ClienteMapper;
 import com.devsu.usermicroservice.infrastructure.persistence.entity.ClienteEntity;
-import com.devsu.usermicroservice.infrastructure.persistence.repository.ClienteRepository;
+import com.devsu.usermicroservice.infrastructure.persistence.repository.ClientRepository;
 import com.devsu.usermicroservice.infrastructure.rest.dto.CreateClientResponseDTO;
 import com.devsu.usermicroservice.infrastructure.rest.mapper.ClientRestMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class CreateClientService implements CreateClientUseCase {
     private final ClienteIdPostgresGenerator clienteIdPostgresGenerator;
     private final PersonaIdPostgresGenerator personaIdPostgresGenerator;
     private final ClienteMapper clienteMapper;
-    private final ClienteRepository clienteRepository;
+    private final ClientRepository clientRepository;
     private final ClientRestMapper clientRestMapper;
 
     @Override
@@ -36,7 +36,7 @@ public class CreateClientService implements CreateClientUseCase {
                 command.telefono(),
                 command.password());
         ClienteEntity clientEntity = clienteMapper.toEntity(client);
-        clienteRepository.save(clientEntity);
+        clientRepository.save(clientEntity);
         return clientRestMapper.toDto(client);
     }
 }

@@ -5,7 +5,7 @@ import com.devsu.usermicroservice.domain.exception.ClientNotFoundException;
 import com.devsu.usermicroservice.domain.model.Cliente;
 import com.devsu.usermicroservice.infrastructure.mapper.ClienteMapper;
 import com.devsu.usermicroservice.infrastructure.persistence.entity.ClienteEntity;
-import com.devsu.usermicroservice.infrastructure.persistence.repository.ClienteRepository;
+import com.devsu.usermicroservice.infrastructure.persistence.repository.ClientRepository;
 import com.devsu.usermicroservice.infrastructure.rest.dto.GetClientByIdResponseDTO;
 import com.devsu.usermicroservice.infrastructure.rest.mapper.ClientRestMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class GetClientByIdService implements GetClientByIdUseCase {
-    private final ClienteRepository clientRepository;
+    private final ClientRepository clientRepository;
     private final ClientRestMapper clientRestMapper;
     private final ClienteMapper clienteMapper;
 

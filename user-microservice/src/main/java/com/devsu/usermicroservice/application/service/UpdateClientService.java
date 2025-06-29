@@ -7,7 +7,7 @@ import com.devsu.usermicroservice.domain.model.Cliente;
 import com.devsu.usermicroservice.domain.model.enums.PersonaGenero;
 import com.devsu.usermicroservice.infrastructure.mapper.ClienteMapper;
 import com.devsu.usermicroservice.infrastructure.persistence.entity.ClienteEntity;
-import com.devsu.usermicroservice.infrastructure.persistence.repository.ClienteRepository;
+import com.devsu.usermicroservice.infrastructure.persistence.repository.ClientRepository;
 import com.devsu.usermicroservice.infrastructure.rest.dto.UpdateClientResponseDTO;
 import com.devsu.usermicroservice.infrastructure.rest.mapper.ClientRestMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UpdateClientService implements UpdateClientUseCase {
-    private final ClienteRepository clientRepository;
+    private final ClientRepository clientRepository;
     private final ClienteMapper clienteMapper;
     private final ClientRestMapper clientRestMapper;
 
