@@ -6,7 +6,7 @@ import com.devsu.accountmicroservice.application.port.out.ValidateClientUseCase;
 import com.devsu.accountmicroservice.infrastructure.persistence.repository.PeticionRepository;
 import com.devsu.library.domain.model.enums.PeticionEstado;
 import com.devsu.library.infrastructure.mapper.PeticionMapper;
-import com.devsu.library.infrastructure.messaging.rabbitmq.dto.enums.ClientValidationRequestDTO;
+import com.devsu.library.infrastructure.messaging.rabbitmq.dto.ClientValidationRequestDTO;
 import com.devsu.library.domain.model.Peticion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

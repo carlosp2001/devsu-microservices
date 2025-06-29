@@ -2,8 +2,7 @@ package com.devsu.usermicroservice.infrastructure.messaging.rabbitmq;
 
 import com.devsu.usermicroservice.application.port.in.ClientValidationUseCase;
 import com.devsu.usermicroservice.infrastructure.persistence.repository.ClientRepository;
-import com.devsu.library.domain.model.enums.PeticionEstado;
-import com.devsu.library.infrastructure.messaging.rabbitmq.dto.enums.ClientValidationRequestDTO;
+import com.devsu.library.infrastructure.messaging.rabbitmq.dto.ClientValidationRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
