@@ -25,7 +25,7 @@ create table cuenta
     updated_at timestamp    not null default now()
 );
 
--- Cliente
+-- Peticion
 create table peticion
 (
     peticion_id uuid         not null primary key,
@@ -33,4 +33,29 @@ create table peticion
     mensaje     varchar(255) not null,
     created_at  timestamp    not null default now(),
     updated_at  timestamp    not null default now()
+);
+
+
+-- Movimiento
+create sequence movimiento_id_seq start 1;
+
+create function generate_movimiento_id()
+    returns text as
+$$
+declare
+    seq_num int;
+begin
+    seq_num := nextval('movimiento_id_seq');
+    return 'MOVIMIENTO-' || lpad(seq_num::text, 5, '0');
+end;
+$$ language plpgsql;
+
+create table movimiento
+(
+    id text not null primary key,
+    tipo varchar(255) not null,
+    monto decimal not null,
+    cuenta_id text not null,
+    created_at timestamp not null default now(),
+    updated_at timestamp not null default now()
 )
