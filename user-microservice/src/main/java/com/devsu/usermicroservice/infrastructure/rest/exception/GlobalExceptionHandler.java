@@ -1,5 +1,6 @@
 package com.devsu.usermicroservice.infrastructure.rest.exception;
 
+import com.devsu.library.infrastructure.rest.exception.ErrorResponse;
 import com.devsu.usermicroservice.domain.exception.ClientNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
