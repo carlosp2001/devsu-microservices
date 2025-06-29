@@ -9,7 +9,8 @@
     <name>microservices-parent</name>
     <modules>
         <module>library</module>
-        <module>usermicroservice</module>
+        <module>user-microservice</module>
+        <module>account-microservice</module>
     </modules>
     <properties>
         <java.version>17</java.version>
