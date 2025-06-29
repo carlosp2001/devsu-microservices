@@ -1,5 +1,6 @@
 package com.devsu.accountmicroservice.infrastructure.rest.exception;
 
+import com.devsu.library.domain.exception.PeticionNotFoundException;
 import com.devsu.library.infrastructure.rest.exception.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         return buildResponse(HttpStatus.BAD_REQUEST, "InvalidRequest", exception.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+    }
+
+    @ExceptionHandler(PeticionNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleRequestNotFound(PeticionNotFoundException exception) {
+        return buildResponse(HttpStatus.NOT_FOUND, "PeticionNotFound", exception.getMessage());
     }
 
     private ResponseEntity<ErrorResponse> buildResponse(HttpStatus status, String type, String message) {
