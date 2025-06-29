@@ -13,4 +13,14 @@ public class PeticionMapper {
         peticionEntity.setUpdatedAt(peticion.getUpdatedAt());
         return peticionEntity;
     }
+
+    public Peticion toDomain(PeticionEntity entity) {
+        return Peticion.hydrate(
+                entity.getPeticionId(),
+                entity.getMensaje(),
+                entity.getEstado(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
+        );
+    }
 }
