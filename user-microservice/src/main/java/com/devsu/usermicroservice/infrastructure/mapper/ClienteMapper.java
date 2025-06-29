@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClienteMapper {
-    public ClienteEntity toEntity(com.devsu.usermicroservice.domain.model.Cliente client) {
+    public ClienteEntity toEntity(Cliente client) {
         PersonaEntity person = new PersonaEntity();
         person.setId(client.getPersonId());
         person.setNombre(client.getNombre());
