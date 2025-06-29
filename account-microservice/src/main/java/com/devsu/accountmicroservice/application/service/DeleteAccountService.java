@@ -13,10 +13,9 @@ public class DeleteAccountService implements DeleteAccountUseCase {
 
     @Override
     public void execute(String accountId) {
-        if (cuentaRepository.existsById(accountId)) {
-            cuentaRepository.deleteById(accountId);
-        } else {
+        if (!cuentaRepository.existsById(accountId)) {
             throw new AccountNotFoundException("Cuenta no encontrada con ID: " + accountId);
         }
+        cuentaRepository.deleteById(accountId);
     }
 }
