@@ -1,5 +1,6 @@
 package com.devsu.accountmicroservice.infrastructure.rest.controller;
 
+import com.devsu.accountmicroservice.application.port.in.DeleteMovimientoByIdUseCase;
 import com.devsu.accountmicroservice.application.port.in.GetMovimientoByIdUseCase;
 import com.devsu.accountmicroservice.application.port.in.ProcessMovimientoUseCase;
 import com.devsu.accountmicroservice.infrastructure.rest.dto.GetMovimientoResponseDTO;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class MovimientoController {
     private final ProcessMovimientoUseCase processMovimientoUseCase;
     private final GetMovimientoByIdUseCase getMovimientoByIdUseCase;
+    private final DeleteMovimientoByIdUseCase deleteMovimientoByIdUseCase;
 
     @PostMapping
     public ResponseEntity<ProcessMovimientoResponseDTO> createTransaction(@RequestBody @Valid ProcessMovimientoRequestDTO requestDTO) {
@@ -25,5 +27,11 @@ public class MovimientoController {
     @GetMapping("/{id}")
     public ResponseEntity<GetMovimientoResponseDTO> getMovimientoById(@PathVariable("id") String id) {
         return ResponseEntity.ok(getMovimientoByIdUseCase.execute(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovimientoById(@PathVariable("id") String id) {
+        deleteMovimientoByIdUseCase.execute(id);
+        return ResponseEntity.noContent().build();
     }
 }
