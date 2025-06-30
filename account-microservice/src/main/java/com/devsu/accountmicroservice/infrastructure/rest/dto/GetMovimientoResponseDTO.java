@@ -9,6 +9,8 @@ public record GetMovimientoResponseDTO(
         MovimientoTipoDTO tipo,
         String cuentaId,
         Double monto,
+        Double saldoInicial,
+        Double saldoDisponible,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
