@@ -17,6 +17,8 @@ public class MovimientoMapper {
         entity.setTipo(domain.getTipo().name());
         entity.setCuentaEntity(cuentaEntity);
         entity.setMonto(domain.getMonto());
+        entity.setSaldoInicial(domain.getSaldoInicial());
+        entity.setSaldoDisponible(domain.getSaldoDisponible());
         entity.setCreatedAt(domain.getCreatedAt());
         entity.setUpdatedAt(domain.getUpdatedAt());
         return entity;
@@ -32,7 +34,9 @@ public class MovimientoMapper {
                 entity.getCuentaEntity().getId(),
                 entity.getMonto(),
                 entity.getCreatedAt(),
-                entity.getUpdatedAt()
+                entity.getUpdatedAt(),
+                entity.getSaldoInicial(),
+                entity.getSaldoDisponible()
         );
     }
 }
