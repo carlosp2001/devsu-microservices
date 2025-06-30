@@ -14,14 +14,19 @@ public class RetiroCommand extends MovimientoCommand {
 
     @Override
     public Movimiento execute(Cuenta cuenta) {
-        if (cuenta.getSaldo().compareTo(monto) >= 0) {
-            BigDecimal saldo = BigDecimal.valueOf(cuenta.getSaldo());
-            BigDecimal montoDecimal = BigDecimal.valueOf(this.monto);
-            cuenta.setSaldo(saldo.subtract(montoDecimal).doubleValue());
-            Movimiento movimiento = new Movimiento(id, MovimientoTipo.RETIRO, monto, cuenta.getId());
-            return movimiento;
-        } else {
+        if (!(cuenta.getSaldo().compareTo(monto) >= 0))
             throw new InsufficientBalanceException("Saldo no disponible para realizar el retiro");
-        }
+
+        BigDecimal initialBalance = BigDecimal.valueOf(cuenta.getSaldo());
+        BigDecimal amountDecimal = BigDecimal.valueOf(this.monto);
+        BigDecimal newBalance = initialBalance.subtract(amountDecimal);
+        cuenta.setSaldo(newBalance.doubleValue());
+        Movimiento movimiento = new Movimiento(id,
+                MovimientoTipo.RETIRO,
+                monto,
+                cuenta.getId(),
+                initialBalance.doubleValue(),
+                newBalance.doubleValue());
+        return movimiento;
     }
 }
