@@ -1,6 +1,26 @@
 version: '3.8'
 
 services:
+  account-db:
+    image: postgres:15
+    container_name: account-db
+    environment:
+      POSTGRES_DB: account-microservice-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - devsu-network
+
+  user-db:
+    image: postgres:15
+    container_name: user-db
+    environment:
+      POSTGRES_DB: user-microservice-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - devsu-network
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -10,3 +30,55 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - devsu-network
+
+  account-microservice:
+    build:
+      context: ./
+      dockerfile: Dockerfile.accountmicroservice
+    container_name: account-microservice
+    environment:
+      SERVER_PORT: 8081
+      DB_URL: jdbc:postgresql://account-db:5432/account-microservice-db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: guest
+      RABBITMQ_PASSWORD: guest
+      SPRING_AMQP_DESERIALIZATION_TRUST_ALL: true
+    depends_on:
+      - account-db
+      - rabbitmq
+    ports:
+      - "8081:8081"
+    networks:
+      - devsu-network
+
+  user-microservice:
+    build:
+      context: ./
+      dockerfile: Dockerfile.usermicroservice
+    container_name: user-microservice
+    environment:
+      SERVER_PORT: 8080
+      DB_URL: jdbc:postgresql://user-db:5432/user-microservice-db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: guest
+      RABBITMQ_PASSWORD: guest
+      SPRING_AMQP_DESERIALIZATION_TRUST_ALL: true
+    depends_on:
+      - user-db
+      - rabbitmq
+    ports:
+      - "8080:8080"
+    networks:
+      - devsu-network
+
+networks:
+  devsu-network:
+    driver: bridge
