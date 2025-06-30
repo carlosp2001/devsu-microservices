@@ -1,0 +1,19 @@
+FROM maven:3.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY . .
+
+RUN mvn clean package -pl account-microservice -am -DskipTests
+
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/account-microservice/target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
+
