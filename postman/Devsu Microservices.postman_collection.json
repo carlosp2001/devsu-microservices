@@ -1,0 +1,940 @@
+{
+	"info": {
+		"_postman_id": "3e29cb1a-21ae-4eec-8347-3e14492b155c",
+		"name": "Devsu Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23604933",
+		"_collection_link": "https://blue-satellite-194953.postman.co/workspace/Personal-Workspace~3a411ecb-608d-4b11-9db1-cd579b2d37f4/collection/23604933-3e29cb1a-21ae-4eec-8347-3e14492b155c?action=share&source=collection_link&creator=23604933"
+	},
+	"item": [
+		{
+			"name": "Cliente Controller",
+			"item": [
+				{
+					"name": "Crear Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"genero\": \"MASCULINO\",\n  \"edad\": 30,\n  \"identificacion\": \"1234567890\",\n  \"password\": \"securePassword123\",\n  \"telefono\": \"0999999999\",\n  \"direccion\": \"Av. Principal 123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_CLIENT__URL}}clientes",
+							"host": [
+								"{{DEVSU_CLIENT__URL}}clientes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Cliente JSON Valido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"genero\": \"MASCULINO\",\n  \"edad\": 30,\n  \"identificacion\": \"1234567890\",\n  \"password\": \"securePassword123\",\n  \"telefono\": \"0999999999\",\n  \"direccion\": \"Av. Principal 123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Crear Cliente JSON Inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"\",\n  \"genero\": null,\n  \"edad\": 15,\n  \"identificacion\": \"\",\n  \"password\": \"\",\n  \"telefono\": \"\",\n  \"direccion\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Actualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Juan Pineda\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 18,\n    \"estado\": \"true\",\n    \"identificacion\": \"1234567890\",\n    \"password\": \"securePassword123\",\n    \"telefono\": \"0999999999\",\n    \"direccion\": \"Av. Principal 123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+							"host": [
+								"{{DEVSU_CLIENT__URL}}clientes"
+							],
+							"path": [
+								":cliente-id"
+							],
+							"variable": [
+								{
+									"key": "cliente-id",
+									"value": "CLIENTE-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizar Cliente JSON Valido",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"genero\": \"MASCULINO\",\n  \"edad\": 30,\n  \"estado\": true,\n  \"identificacion\": \"1234567890\",\n  \"password\": \"securePassword123\",\n  \"telefono\": \"0999999999\",\n  \"direccion\": \"Av. Principal 123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									],
+									"path": [
+										":cliente-id"
+									],
+									"variable": [
+										{
+											"key": "cliente-id",
+											"value": "CLIENTE-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Actualizar Cliente JSON Inválido",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"\",\n  \"genero\": null,\n  \"edad\": 15,\n  \"identificacion\": \"\",\n  \"password\": \"\",\n  \"telefono\": \"\",\n  \"direccion\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									],
+									"path": [
+										":cliente-id"
+									],
+									"variable": [
+										{
+											"key": "cliente-id",
+											"value": "CLIENTE-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Remover Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+							"host": [
+								"{{DEVSU_CLIENT__URL}}clientes"
+							],
+							"path": [
+								":cliente-id"
+							],
+							"variable": [
+								{
+									"key": "cliente-id",
+									"value": "CLIENTE-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remover Cliente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									],
+									"path": [
+										":cliente-id"
+									],
+									"variable": [
+										{
+											"key": "cliente-id",
+											"value": "CLIENTE-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener Cliente por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+							"host": [
+								"{{DEVSU_CLIENT__URL}}clientes"
+							],
+							"path": [
+								":cliente-id"
+							],
+							"variable": [
+								{
+									"key": "cliente-id",
+									"value": "CLIENTE-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener Cliente por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DEVSU_CLIENT__URL}}clientes/:cliente-id",
+									"host": [
+										"{{DEVSU_CLIENT__URL}}clientes"
+									],
+									"path": [
+										":cliente-id"
+									],
+									"variable": [
+										{
+											"key": "cliente-id",
+											"value": "CLIENTE-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cuenta Controller",
+			"item": [
+				{
+					"name": "Crear Cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"saldoInicial\": 1500.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Cuenta JSON Inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 50.0,\n  \"cuentaTipo\": null,\n  \"estado\": null,\n  \"clientId\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Crear Cuenta JSON Valido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Verificar petición estado",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:peticion-id/estado",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							],
+							"path": [
+								":peticion-id",
+								"estado"
+							],
+							"variable": [
+								{
+									"key": "peticion-id",
+									"value": "80ca44d2-5130-483a-bea4-f722c846a07a"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verificar petición estado Válida",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:peticion-id/estado",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":peticion-id",
+										"estado"
+									],
+									"variable": [
+										{
+											"key": "peticion-id",
+											"value": "38e22fe1-40ee-43cc-961a-cf3635915fb8"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Verificar petición Inválida",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:peticion-id/estado",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":peticion-id",
+										"estado"
+									],
+									"variable": [
+										{
+											"key": "peticion-id",
+											"value": "38e22fe1-40ee-43cc-961a-cf3635915f29"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Obtener Cuenta por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							],
+							"path": [
+								":cuenta-id"
+							],
+							"variable": [
+								{
+									"key": "cuenta-id",
+									"value": "CUENTA-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener Cuenta por Id Válido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Obtener Cuenta por Id Inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-000017"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Eliminar Cuenta por Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							],
+							"path": [
+								":cuenta-id"
+							],
+							"variable": [
+								{
+									"key": "cuenta-id",
+									"value": "CUENTA-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Cuenta por Id Válido",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Eliminar Cuenta por Id Inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-000017"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Eliminar Cuenta por Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							],
+							"path": [
+								":cuenta-id"
+							],
+							"variable": [
+								{
+									"key": "cuenta-id",
+									"value": "CUENTA-00001"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Cuenta por Id Válido",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-00001"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Eliminar Cuenta por Id Inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"saldoInicial\": 150.0,\n  \"cuentaTipo\": \"AHORRO\",\n  \"estado\": true,\n  \"clientId\": \"CLIENTE-00002\"\n}"
+								},
+								"url": {
+									"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+									"host": [
+										"{{DEVSU_ACCOUNT__URL}}cuentas"
+									],
+									"path": [
+										":cuenta-id"
+									],
+									"variable": [
+										{
+											"key": "cuenta-id",
+											"value": "CUENTA-000017"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Actualizar Cuenta",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estado\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}cuentas/:cuenta-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}cuentas"
+							],
+							"path": [
+								":cuenta-id"
+							],
+							"variable": [
+								{
+									"key": "cuenta-id",
+									"value": "CUENTA-00001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimiento Controller",
+			"item": [
+				{
+					"name": "Procesar transacción",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"RETIRO\",\n  \"cuentaId\": \"CUENTA-00001\",\n  \"monto\": 1000.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}movimientos",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}movimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener movimiento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"RETIRO\",\n  \"cuentaId\": \"CUENTA-00001\",\n  \"monto\": 500.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}movimientos/:movimiento-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}movimientos"
+							],
+							"path": [
+								":movimiento-id"
+							],
+							"variable": [
+								{
+									"key": "movimiento-id",
+									"value": "MOVIMIENTO-00001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar movimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"RETIRO\",\n  \"cuentaId\": \"CUENTA-00001\",\n  \"monto\": 500.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}movimientos/:movimiento-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}movimientos"
+							],
+							"path": [
+								":movimiento-id"
+							],
+							"variable": [
+								{
+									"key": "movimiento-id",
+									"value": "MOVIMIENTO-00007"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar movimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"RETIRO\",\n  \"cuentaId\": \"CUENTA-00001\",\n  \"monto\": 500.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}movimientos/:movimiento-id",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}movimientos"
+							],
+							"path": [
+								":movimiento-id"
+							],
+							"variable": [
+								{
+									"key": "movimiento-id",
+									"value": "MOVIMIENTO-00007"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte Controller",
+			"item": [
+				{
+					"name": "Obtener reporte de movimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEVSU_ACCOUNT__URL}}reportes?fechaInicio=2025-06-01T00:00:00Z&fechaFinal=2025-07-30T23:59:59Z&clientId=CLIENTE-00002",
+							"host": [
+								"{{DEVSU_ACCOUNT__URL}}reportes"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-06-01T00:00:00Z"
+								},
+								{
+									"key": "fechaFinal",
+									"value": "2025-07-30T23:59:59Z"
+								},
+								{
+									"key": "clientId",
+									"value": "CLIENTE-00002"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
