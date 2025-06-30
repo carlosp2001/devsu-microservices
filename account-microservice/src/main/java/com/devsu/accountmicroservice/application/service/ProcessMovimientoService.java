@@ -40,7 +40,6 @@ public class ProcessMovimientoService implements ProcessMovimientoUseCase {
                         "Cuenta con ID " + request.cuentaId() + " no encontrada."
                 ));
         Cuenta cuenta = accountMapper.toDomain(cuentaEntity);
-        double initialBalance = cuenta.getSaldo();
 
         String id = movimientoIdPostgresGenerator.generateId();
         MovimientoCommand command =
@@ -56,12 +55,12 @@ public class ProcessMovimientoService implements ProcessMovimientoUseCase {
         cuentaRepository.save(updatedEntity);
         return new ProcessMovimientoResponseDTO(
                 movimiento.getId(),
-                initialBalance,
+                movimiento.getSaldoInicial(),
                 cuenta.getId(),
                 CuentaTipoDTO.valueOf(cuenta.getTipo().name()),
                 cuenta.getEstado(),
                 movimiento.getMonto(),
-                cuenta.getSaldo());
+                movimiento.getSaldoDisponible());
     }
 
     private void checkIfAccountExists(ProcessMovimientoRequestDTO request) {
