@@ -17,6 +17,8 @@ public class MovimientoRestMapper {
                 toDTO(domain.getTipo()),
                 domain.getCuentaId(),
                 domain.getMonto(),
+                domain.getSaldoInicial(),
+                domain.getSaldoDisponible(),
                 domain.getCreatedAt(),
                 domain.getUpdatedAt()
         );
