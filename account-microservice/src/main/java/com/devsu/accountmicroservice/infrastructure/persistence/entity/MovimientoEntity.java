@@ -26,6 +26,12 @@ public class MovimientoEntity {
     @Column(nullable = false)
     private Double monto;
 
+    @Column(nullable = false)
+    private Double saldoInicial;
+
+    @Column(nullable = false)
+    private Double saldoDisponible;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
