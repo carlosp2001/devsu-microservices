@@ -52,10 +52,12 @@ $$ language plpgsql;
 
 create table movimiento
 (
-    id text not null primary key,
-    tipo varchar(255) not null,
-    monto decimal not null,
-    cuenta_id text not null,
-    created_at timestamp not null default now(),
-    updated_at timestamp not null default now()
-)
+    id               text         not null primary key,
+    tipo             varchar(255) not null,
+    monto            decimal      not null,
+    cuenta_id        text         not null,
+    saldo_inicial    decimal      not null,
+    saldo_disponible decimal      not null,
+    created_at       timestamp    not null default now(),
+    updated_at       timestamp    not null default now()
+);
