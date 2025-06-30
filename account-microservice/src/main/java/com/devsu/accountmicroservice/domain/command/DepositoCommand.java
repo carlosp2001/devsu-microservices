@@ -13,14 +13,17 @@ public class DepositoCommand extends MovimientoCommand {
 
     @Override
     public Movimiento execute(Cuenta account) {
-        BigDecimal saldo = BigDecimal.valueOf(account.getSaldo());
+        BigDecimal initialBalance = BigDecimal.valueOf(account.getSaldo());
         BigDecimal montoDecimal = BigDecimal.valueOf(this.monto);
-        account.setSaldo(saldo.add(montoDecimal).doubleValue());
+        Double newBalance = initialBalance.add(montoDecimal).doubleValue();
+        account.setSaldo(newBalance);
         Movimiento movimiento = new Movimiento(
                 id,
                 MovimientoTipo.DEPOSITO,
                 monto,
-                account.getId());
+                account.getId(),
+                initialBalance.doubleValue(),
+                newBalance);
         return movimiento;
     }
 }
