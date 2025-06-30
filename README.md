@@ -20,6 +20,28 @@ módulos compartidos y configurados con herramientas modernas como Docker y Test
 
 ---
 
+## Configuración y Pruebas con Postman
+
+El proyecto incluye una colección de Postman para simplificar las pruebas de los microservicios. A continuación los pasos para configurar y usar Postman:
+
+1. **Importar el workspace (variables de entorno):**
+    - Ubicado en el directorio `postman`, importa primero el archivo `workspace.postman_globals.json` en Postman.
+    - Este archivo contiene las variables necesarias que permiten la comunicación entre los microservicios mediante sus respectivos endpoints.
+    - En Postman, selecciona:
+        - `File > Import > Upload Files` y selecciona `workspace.postman_globals.json`.
+
+2. **Importar la colección:**
+    - Ubica y selecciona el archivo `Devsu Microservices.postman_collection.json` en la carpeta `postman`.
+    - La colección incluye ejemplos de peticiones para los microservicios expuestos.
+    - Proceso:
+        - `File > Import > Upload Files` y selecciona `Devsu Microservices.postman_collection.json`.
+
+3. **Ejecución de peticiones:**
+    - Usa la colección importada para realizar pruebas sobre los endpoints de los microservicios (`user` y `account`).
+    - Asegúrate de haber iniciado previamente los servicios (ver sección [Instalación y Ejecución](#instalación-y-ejecución)).
+
+---
+
 ## Arquitectura
 
 ### 1. **Arquitectura Hexagonal (Puertos y Adaptadores)**
